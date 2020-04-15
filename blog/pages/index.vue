@@ -1,72 +1,34 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        blog
-      </h1>
-      <h2 class="subtitle">
-        个人博客前端页面
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <el-row class="container">
+    <el-col :xs="0" :sm="7" :md="6" :lg="5" :xl="4" class="left">
+      <div class="avatar">
+        <el-image src="http://img.books.myjerry.cn/blog/blog-avatar.jpg?e=1586963898&token=Ri2kmIh6VvWWJGiShCgGogDeMax9auovBxSCAGsY:w8M6PSTDS6Zik-FV35c1FswOyjM="
+          fit="cover"  lazy />
       </div>
-    </div>
-  </div>
+      <h4 class="name">Jerry-全栈工程师</h4>
+      <ul>
+        <li v-for="item in 4" :key="item" :title="`标题${item}`">标题{{ item }}</li>
+      </ul>
+      <p class="view-count" title="访问量">
+        <i class="el-icon-view" /> 1000+
+      </p>
+    </el-col>
+    <el-col :xs="24" :sm="17" :md="18" :lg="19" :xl="20" class="right">
+      <el-row>
+        <el-col :xs="24" :sm="24" :md="18" :lg="17" :xl="18">
+          <nuxt-child />
+          <p class="icp"><a href="http://www.beian.miit.gov.cn">陕ICP备17007879号</a></p>
+        </el-col>
+      </el-row>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  }
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style lang="scss" scoped>
+@import '~/assets/css/index.scss';
 </style>

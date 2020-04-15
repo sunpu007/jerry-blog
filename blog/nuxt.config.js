@@ -23,7 +23,8 @@ export default {
   ** Global CSS
   */
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    '~/assets/css/common.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -36,7 +37,7 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    // '@nuxtjs/eslint-module'
   ],
   /*
   ** Nuxt.js modules
@@ -61,5 +62,7 @@ export default {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  // 防止重复打包
+  vendor:['element-ui']
 }

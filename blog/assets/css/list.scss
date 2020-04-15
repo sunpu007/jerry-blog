@@ -1,0 +1,24 @@
+.pages {
+  ul {
+    li {
+      margin-bottom: 20px;
+      .list-title {
+        color: #1890ff;
+        font-size: 1.4rem;
+      }
+      .list-icon {
+        margin: .5rem 0;
+      }
+      .list-context {
+        font-size: 1rem;
+        color: #999;
+        line-height: 1.6rem;
+      }
+      .list-go {
+        text-align: right;
+        color: #1890ff;
+        font-size: .9rem;
+      }
+    }
+  }
+}

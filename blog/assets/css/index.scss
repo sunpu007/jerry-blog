@@ -1,0 +1,50 @@
+.left {
+  color: #fff;
+  background: #2d3a4b;
+  height: 100%;
+  position: relative;
+  .avatar {
+    text-align: center;
+    .el-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-top: 100px;
+    }
+  }
+  .name {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  ul {
+    margin-top: 80px;
+    padding-left: 15%;
+    line-height: 60px;
+    font-size: 1.2rem;
+  }
+  .view-count {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    font-size: .9rem;
+    color: #999;
+  }
+}
+
+.right {
+  height: 100%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  .icp {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 50px;
+    color: #666;
+  }
+}

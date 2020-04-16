@@ -7,12 +7,20 @@
         font-size: 1.4rem;
       }
       .list-icon {
-        margin: .5rem 0;
+        color: #999;
+        padding: .5rem 0;
+        span {
+          margin: 0 .5rem;
+        }
       }
       .list-context {
         font-size: 1rem;
         color: #999;
         line-height: 1.6rem;
+        p {
+          margin-bottom: .5rem;
+          text-indent: 2em;
+        }
       }
       .list-go {
         text-align: right;

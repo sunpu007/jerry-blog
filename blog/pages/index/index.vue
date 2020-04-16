@@ -1,7 +1,7 @@
 <template>
   <div class="pages">
     <ul>
-      <template v-for="item in 10">
+      <template v-for="(item, index) in 10">
         <li :key="item">
           <h4 class="list-title">
             <nuxt-link to="/detail/123" title="React Router 免费文字视频教程（共9集）">React Router 免费文字视频教程（共9集）</nuxt-link>
@@ -12,7 +12,7 @@
             <nuxt-link to="/detail/123" title="查看全文">查看全文<i class="el-icon-arrow-right" /></nuxt-link>
           </p>
         </li>
-        <el-divider />
+        <el-divider v-if="index!=9" />
       </template>
     </ul>
   </div>

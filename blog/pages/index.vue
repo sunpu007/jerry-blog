@@ -8,8 +8,28 @@
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
       <ul>
-        <li v-for="item in 4" :key="item" :title="`标题${item}`">标题{{ item }}</li>
+        <li v-for="item in 4" :key="item" :title="`标题${item}`">
+          <nuxt-link to="">标题{{ item }}</nuxt-link>
+        </li>
       </ul>
+      <div class="social-account">
+        <el-divider>社交账号</el-divider>
+        <el-tooltip class="item" effect="dark" content="https://github.com/sunpu007" placement="top">
+          <el-avatar size="small">
+            <a href="https://github.com/sunpu007" target="_blank"><i class="iconfont icon-GitHub"/></a>
+          </el-avatar>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="QQ: 731238433" placement="top">
+          <el-avatar size="small">
+            <i class="iconfont icon-QQ"/>
+          </el-avatar>
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="wechat: " placement="top">
+          <el-avatar size="small">
+            <i class="iconfont icon-wechat"/>
+          </el-avatar>
+        </el-tooltip>
+      </div>
       <div class="left-footer">
         <p class="view-count" title="访问量"><i class="el-icon-view" /> 1000+</p>
         <p class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank">陕ICP备17007879号</a></p>

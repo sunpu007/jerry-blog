@@ -2,7 +2,7 @@
   <el-row class="container">
     <el-col :xs="0" :sm="7" :md="6" :lg="5" :xl="4" class="left">
       <div class="avatar">
-        <el-image src="http://img.books.myjerry.cn/blog/blog-avatar.jpg?e=1586963898&token=Ri2kmIh6VvWWJGiShCgGogDeMax9auovBxSCAGsY:w8M6PSTDS6Zik-FV35c1FswOyjM="
+        <el-image src="http://cdn-blog.myjerry.cn/avatar/blog-avatar.jpg"
           fit="cover"  lazy />
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>

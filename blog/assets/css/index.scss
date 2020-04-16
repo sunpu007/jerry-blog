@@ -23,15 +23,27 @@
     line-height: 60px;
     font-size: 1.2rem;
   }
-  .view-count {
+  // .view-count {
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   text-align: center;
+  //   margin: 20px 0;
+  //   font-size: .9rem;
+  //   color: #999;
+  // }
+  .left-footer {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     text-align: center;
-    margin: 20px 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #666;
     font-size: .9rem;
-    color: #999;
+    margin: 20px 0;
   }
 }
 
@@ -40,11 +52,5 @@
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0;
-  }
-  .icp {
-    text-align: center;
-    font-size: 1rem;
-    line-height: 50px;
-    color: #666;
   }
 }

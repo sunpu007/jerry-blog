@@ -32,6 +32,7 @@
       </div>
       <div class="left-footer">
         <p class="view-count" title="访问量"><i class="el-icon-view" /> 1000+</p>
+        <p>系统由 Vue+Node+Element UI驱动</p>
         <p class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank">陕ICP备17007879号</a></p>
       </div>
     </el-col>

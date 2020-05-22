@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "blog-server",
   "version": "1.0.0",
   "description": "个人博客API端",
   "private": true,
@@ -24,8 +24,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-server",
-    "stop": "egg-scripts stop --title=egg-server-server",
+    "start": "egg-scripts start --daemon --title=egg-server-blog-server-api",
+    "stop": "egg-scripts stop --title=egg-server-blog-server-api",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",

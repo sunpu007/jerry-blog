@@ -20,10 +20,10 @@ module.exports = appInfo => {
 
   // add your user config here
   const userConfig = {
-    // myAppName: 'egg',
+    myAppName: 'blog-server',
   };
 
-  exports.mysql = {
+  config.mysql = {
     // 单数据库信息配置
     client: {
       // host
@@ -38,6 +38,10 @@ module.exports = appInfo => {
       database: 'blog',
       debug: true,
     },
+  };
+
+  config.logger = {
+    dir: path.join(appInfo.root, 'logs/'),
   };
 
   return {

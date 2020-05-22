@@ -44,7 +44,7 @@ module.exports = appInfo => {
   
   // 配置日志
   config.logger = {
-    dir: path.join(appInfo.root, 'logs'),
+    dir: path.join(appInfo.baseDir, 'logs'),
   };
 
   return {

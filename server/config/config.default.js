@@ -41,7 +41,8 @@ module.exports = appInfo => {
       // debug: true,
     },
   };
-  console.log('appInfo.root', path.join(appInfo.root, 'logs'));
+  
+  // 配置日志
   config.logger = {
     dir: path.join(appInfo.root, 'logs'),
   };

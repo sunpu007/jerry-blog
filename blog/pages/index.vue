@@ -8,13 +8,13 @@
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
       <ul>
-        <li v-for="item in 4" :key="item" :title="`标题${item}`">
-          <nuxt-link to="">标题{{ item }}</nuxt-link>
+        <li v-for="item in 4" :key="item" :title="`首页${item}`">
+          <nuxt-link to="">首页{{ item }}</nuxt-link>
         </li>
       </ul>
       <div class="social-account">
         <el-divider>社交账号</el-divider>
-        <el-tooltip class="item" effect="dark" content="https://github.com/sunpu007" placement="top">
+        <el-tooltip class="item" effect="dark" content="GitHub: https://github.com/sunpu007" placement="top">
           <el-avatar size="small">
             <a href="https://github.com/sunpu007" target="_blank"><i class="iconfont icon-GitHub"/></a>
           </el-avatar>
@@ -24,7 +24,7 @@
             <i class="iconfont icon-QQ"/>
           </el-avatar>
         </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="wechat: " placement="top">
+        <el-tooltip class="item" effect="dark" content="WeChat: " placement="top">
           <el-avatar size="small">
             <i class="iconfont icon-wechat"/>
           </el-avatar>

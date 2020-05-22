@@ -38,12 +38,12 @@ module.exports = appInfo => {
       password: 'blog2020',
       // 数据库名
       database: 'blog',
-      debug: true,
+      // debug: true,
     },
   };
-
+  console.log('appInfo.root', path.join(appInfo.root, 'logs'));
   config.logger = {
-    dir: path.join(appInfo.root, 'logs/'),
+    dir: path.join(appInfo.root, 'logs'),
   };
 
   return {

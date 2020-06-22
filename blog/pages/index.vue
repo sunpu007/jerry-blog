@@ -8,8 +8,8 @@
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
       <ul>
-        <li v-for="item in 4" :key="item" :title="`首页${item}`">
-          <nuxt-link to="">首页{{ item }}</nuxt-link>
+        <li v-for="item in 4" :key="item" :title="`列表${item}`">
+          <nuxt-link to="">列表{{ item }}</nuxt-link>
         </li>
       </ul>
       <div class="social-account">
@@ -24,7 +24,7 @@
             <i class="iconfont icon-QQ"/>
           </el-avatar>
         </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="WeChat: " placement="top">
+        <el-tooltip class="item" effect="dark" content="WeChat: s731238433" placement="top">
           <el-avatar size="small">
             <i class="iconfont icon-wechat"/>
           </el-avatar>

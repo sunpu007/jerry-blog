@@ -6,6 +6,8 @@ const RESULT = {
   RESULT_SUCC: 0,
   // 通用失败
   RESULT_FAIL: 1,
+  // 登录失效
+  RESULT_LOGIN_FAIL: -1,
 };
 
 module.exports = RESULT;

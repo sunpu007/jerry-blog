@@ -19,8 +19,8 @@ class Jwt {
           exp: Math.floor(Date.now() / 1000) + (60 * 60),
           data: this.data,
         },
-        'token',
-      ))
+        'token'
+      ));
     });
   }
   /**

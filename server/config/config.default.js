@@ -41,10 +41,16 @@ module.exports = appInfo => {
       // debug: true,
     },
   };
-  
+
   // 配置日志
   config.logger = {
     dir: path.join(appInfo.baseDir, 'logs'),
+  };
+
+  config.security = {
+    csrf: {
+      enable: false,
+    },
   };
 
   return {

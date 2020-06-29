@@ -12,7 +12,6 @@ const { RESULT_SUCC } = require('./../constants/result');
  * data:Object 返回数据
  */
 const setResult = function(data) {
-  console.log('============>', data);
   return {
     code: (data && data.code) || RESULT_SUCC,
     message: (data && data.message) || 'success',

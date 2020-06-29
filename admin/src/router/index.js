@@ -64,6 +64,13 @@ export const constantRoutes = [
         name: 'List',
         component: () => import('@/views/article/list'),
         meta: { title: '文章列表', icon: 'list' }
+      },
+      {
+        path: 'edit',
+        name: 'Edit',
+        component: () => import('@/views/article/edit'),
+        meta: { title: '编辑文章', icon: 'edit' },
+        hidden: true
       }
     ]
   },

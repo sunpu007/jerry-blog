@@ -5,7 +5,8 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  router.post('/api/admin/login', controller.login.login);
-  router.get('/api/admin/user/info', controller.login.userInfo);
-  router.post('/api/admin/logout', controller.login.logout);
+  router.post('/api/admin/login', controller.admin.login);
+  router.get('/api/admin/user/info', controller.admin.userInfo);
+  router.post('/api/admin/logout', controller.admin.logout);
+  router.get('/api/admin/article/list', controller.admin.articleList);
 };

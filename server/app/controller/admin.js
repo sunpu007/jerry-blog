@@ -35,6 +35,24 @@ class LoginController extends Controller {
     const { ctx } = this;
     ctx.body = setResult();
   }
+  /**
+   * 文章列表
+   */
+  async articleList() {
+    const { ctx } = this;
+    const { page = 1, size = 20 } = ctx.query;
+    const limit = parseInt(size),
+      offset = parseInt(page - 1) * parseInt(size);
+    const [ list, total ] = await Promise.all([
+      this.app.mysql.select('Article', {
+        orders: [['CreatedTime','desc']],
+        limit,
+        offset,
+      }),
+      this.app.mysql.count('Article'),
+    ]);
+    ctx.body = setResult({ data: { list, total } });
+  }
 }
 
 module.exports = LoginController;

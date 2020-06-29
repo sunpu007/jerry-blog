@@ -25,7 +25,7 @@ class LoginController extends Controller {
   async userInfo() {
     const { ctx } = this;
     const token = ctx.query.token;
-    const info = (await new Jwt(token).verifyToken()).data;
+    const info = JSON.parse((await new Jwt(token).verifyToken()).data);
     ctx.body = setResult({ data: { name: info.Name, avatar: info.Avatar } });
   }
   /**

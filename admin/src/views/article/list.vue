@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="filter-container">
     <el-input placeholder="用户ID" clearable class="filter-item" style="width: 130px" />
-      <el-button v-waves class="filter-item" type="primary" icon="el-icon-plus">新增文章</el-button>
+      <el-button v-waves class="filter-item" type="primary" icon="el-icon-plus" @click="handlEdit(null)">新增文章</el-button>
     </div>
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" prop="Id" label="ID" width="50px" />
@@ -26,16 +26,21 @@
         </template>
       </el-table-column>
       <el-table-column align="center" label="操作" width="80px">
-        <el-button type="text">编辑</el-button>
+        <template slot-scope="{row}">
+          <el-button type="text" @click="handlEdit(row.Id)">编辑</el-button>
+        </template>
       </el-table-column>
     </el-table>
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.size" @pagination="getList" />
   </div>
 </template>
 
 <script>
+import Pagination from '@/components/Pagination'
 import waves from '@/directive/waves'
 import { articleList } from '@/api/article'
 export default {
+  components: { Pagination },
   directives: { waves },
   filters: {
     statusFilter(val) {
@@ -73,8 +78,12 @@ export default {
         this.total = data.total
       }
     },
-    handlEdit(id) {
-
+    handlEdit(Id) {
+      if (Id) {
+        this.$router.push({ path: '/article/edit', query: { Id } })
+      } else {
+        this.$router.push({ path: '/article/edit' })
+      }
     }
   }
 }

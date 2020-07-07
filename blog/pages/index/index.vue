@@ -23,11 +23,23 @@
             <nuxt-link to="/detail/123" title="查看全文">查看全文<i class="el-icon-arrow-right" /></nuxt-link>
           </p>
         </li>
-        <el-divider v-if="index!=9" />
+        <el-divider :key="item" v-if="index!=9" />
       </template>
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  async asyncData({ params }) {
+    console.log(11111);
+    return { title: 'test' }
+  },
+  mounted() {
+    console.log(2222222);
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import '~/assets/css/list.scss';

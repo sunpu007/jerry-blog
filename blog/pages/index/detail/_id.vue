@@ -1,14 +1,14 @@
 <template>
   <div class="pages">
-    <h4 class="title">React Router 免费文字视频教程（共9集）</h4>
+    <h4 class="title">{{info.Title}}</h4>
     <p class="icon">
       <span>
         <i class="el-icon-date" />
-        2020-04-16
+        {{info.CreatedTime | dateTimeFilter('yyyy-MM-dd')}}
       </span>
       <span>
         <i class="el-icon-view" />
-        17834
+        {{info.ViewCount}}
       </span>
       <!-- <span>
         <i class="el-icon-star-off" />
@@ -38,12 +38,16 @@ marked.setOptions({
   }
 })
 export default {
+  async asyncData({ params, app: { $axios } }) {
+    const data = await $axios.get(`http://127.0.0.1:7001/blog/article/info/${params.id}`)
+    return data.data.data
+  },
   data() {
     return {}
   },
   computed: {
     compiledMarkdown() {
-      return marked('# Marked in browser\n\nRendered by **marked**.\n```bash\nwerwer\n```', { sanitize: true })
+      return marked(this.info.Content, { sanitize: true })
     }
   }
 }

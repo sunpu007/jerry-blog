@@ -15,6 +15,14 @@ class ArticleController extends Controller {
     });
     ctx.body = setResult({ data: { list } });
   }
+  /**
+   * 获取文章详情
+   */
+  async info() {
+    const { ctx } = this;
+    const info = await ctx.app.mysql.get('Article', { Id: ctx.params.Id });
+    ctx.body = setResult({ data: { info } });
+  }
 }
 
 module.exports = ArticleController;

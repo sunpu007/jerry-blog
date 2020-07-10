@@ -16,11 +16,9 @@
               {{item.ViewCount}}
             </span>
           </div>
-          <div class="list-context">
-            <p>{{item.Introduce}}</p>
-          </div>
+          <div class="list-context" v-html="item.Introduce" />
           <p class="list-go">
-            <nuxt-link to="/detail/123" title="查看全文">查看全文<i class="el-icon-arrow-right" /></nuxt-link>
+            <nuxt-link to="`/detail/${item.Id}`" title="查看全文">查看全文<i class="el-icon-arrow-right" /></nuxt-link>
           </p>
         </li>
         <el-divider :key="item.Id" v-if="index!=list.length-1" />
@@ -30,10 +28,32 @@
 </template>
 
 <script>
+import marked from 'marked'
+import hljs from "highlight.js";
+import 'highlight.js/styles/monokai-sublime.css';
+const rendererMD = new marked.Renderer()
+marked.setOptions({
+  renderer: rendererMD,
+  gfm: true,
+  pedantic: false,
+  sanitize: false,
+  tables: true,
+  breaks: false,
+  smartLists: true,
+  smartypants: false,
+  highlight(code) {
+    return hljs.highlightAuto(code).value;
+  }
+})
 export default {
   async asyncData({ app: { $axios } }) {
     const data = await $axios.get('/article/list')
-    return data.data.data
+    const list = data.data.data.list;
+    list.forEach(item => {
+      item.Introduce = marked(item.Introduce, { sanitize: true })
+    });
+
+    return { list }
   }
 }
 </script>

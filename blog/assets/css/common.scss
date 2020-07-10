@@ -22,3 +22,11 @@ a {
 .pages {
   padding: 30px 20px;
 }
+
+// Page excessive effect
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}

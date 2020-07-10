@@ -8,8 +8,11 @@
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
       <ul>
-        <li v-for="item in 4" :key="item" :title="`列表${item}`">
-          <nuxt-link to="">列表{{ item }}</nuxt-link>
+        <li title="文章">
+          <nuxt-link to="/">文章</nuxt-link>
+        </li>
+        <li title="个人简介">
+          <a href="http://resume.myjerry.cn/" target="_blank">个人简介</a>
         </li>
       </ul>
       <div class="social-account">

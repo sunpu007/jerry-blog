@@ -39,7 +39,7 @@ marked.setOptions({
 })
 export default {
   async asyncData({ params, app: { $axios } }) {
-    const data = await $axios.get(`http://127.0.0.1:7001/blog/article/info/${params.id}`)
+    const data = await $axios.get(`/article/info/${params.id}`)
     return data.data.data
   },
   data() {

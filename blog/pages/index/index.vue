@@ -32,7 +32,7 @@
 <script>
 export default {
   async asyncData({ app: { $axios } }) {
-    const data = await $axios.get('http://127.0.0.1:7001/blog/article/list')
+    const data = await $axios.get('/article/list')
     return data.data.data
   }
 }

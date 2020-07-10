@@ -47,13 +47,22 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true, // 表示开启代理
+    prefix: '/blog', // 表示给请求url加个前缀 /api
+  },
+  proxy: {
+    '/blog': {
+      target: 'http://127.0.0.1:7001', // 目标接口域名
+      changeOrigin: true, // 表示是否跨域
+    }
   },
   /*
   ** Build configuration
@@ -67,5 +76,5 @@ export default {
     }
   },
   // 防止重复打包
-  vendor:['element-ui']
+  vendor:['element-ui', 'axios']
 }

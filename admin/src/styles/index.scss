@@ -73,3 +73,11 @@ div:focus {
     margin-bottom: 10px;
   }
 }
+
+.tui-editor .te-preview-style-vertical .te-md-splitter {
+  width: 50%;
+}
+
+.tui-editor .te-preview-style-vertical .te-preview {
+  width: 100% !important;
+}

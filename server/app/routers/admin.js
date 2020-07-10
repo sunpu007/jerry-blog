@@ -9,4 +9,5 @@ module.exports = app => {
   router.get('/api/admin/user/info', controller.admin.userInfo);
   router.post('/api/admin/logout', controller.admin.logout);
   router.get('/api/admin/article/list', controller.admin.articleList);
+  router.get('/api/admin/article/info/:Id', controller.admin.info);
 };

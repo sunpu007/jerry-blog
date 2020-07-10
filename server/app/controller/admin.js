@@ -45,6 +45,7 @@ class LoginController extends Controller {
       offset = parseInt(page - 1) * parseInt(size);
     const [ list, total ] = await Promise.all([
       this.app.mysql.select('Article', {
+        columns: ['Id', 'Title', 'Summary', 'ViewCount', 'CreatedTime'],
         orders: [['CreatedTime','desc']],
         limit,
         offset,
@@ -52,6 +53,16 @@ class LoginController extends Controller {
       this.app.mysql.count('Article'),
     ]);
     ctx.body = setResult({ data: { list, total } });
+  }
+  /**
+   * 文章详情
+   */
+  async info() {
+    const { ctx } = this;
+    const info = await ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
+      columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount'],
+    });
+    ctx.body = setResult({ data: { info } });
   }
 }
 

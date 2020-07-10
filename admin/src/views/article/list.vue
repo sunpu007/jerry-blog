@@ -1,28 +1,28 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-    <el-input placeholder="用户ID" clearable class="filter-item" style="width: 130px" />
+      <el-input placeholder="用户ID" clearable class="filter-item" style="width: 130px" />
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-plus" @click="handlEdit(null)">新增文章</el-button>
     </div>
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" prop="Id" label="ID" width="50px" />
       <el-table-column align="center" prop="Title" label="标题" />
-      <el-table-column align="center" prop="Introduce" show-overflow-tooltip label="简介" />
+      <el-table-column align="center" prop="Summary" show-overflow-tooltip label="摘要" />
       <!-- <el-table-column align="center" prop="Content" label="内容" /> -->
       <el-table-column align="center" prop="ViewCount" label="浏览量" width="80px" />
       <el-table-column align="center" prop="Status" label="状态" width="80px">
         <template slot-scope="{row}">
-          {{row.Status | statusFilter}}
+          {{ row.Status | statusFilter }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="CreatedTime" label="创建时间" width="140px">
         <template slot-scope="{row}">
-          {{row.CreatedTime | dateTimeFilter('yyyy-MM-dd hh:mm:ss')}}
+          {{ row.CreatedTime | dateTimeFilter('yyyy-MM-dd hh:mm:ss') }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="UpdatedTime" label="修改时间" width="140px">
         <template slot-scope="{row}">
-          {{row.UpdatedTime | dateTimeFilter('yyyy-MM-dd hh:mm:ss')}}
+          {{ row.UpdatedTime | dateTimeFilter('yyyy-MM-dd hh:mm:ss') }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="操作" width="80px">
@@ -80,7 +80,7 @@ export default {
     },
     handlEdit(Id) {
       if (Id) {
-        this.$router.push({ path: '/article/edit', query: { Id } })
+        this.$router.push({ path: '/article/edit', query: { Id }})
       } else {
         this.$router.push({ path: '/article/edit' })
       }

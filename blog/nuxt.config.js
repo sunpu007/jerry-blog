@@ -33,7 +33,8 @@ export default {
   */
   plugins: [
     '@/plugins/element-ui',
-    '@/plugins/filters'
+    '@/plugins/filters',
+    { src: '@/plugins/loading', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

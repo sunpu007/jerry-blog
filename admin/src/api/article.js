@@ -7,3 +7,10 @@ export function articleList(params) {
     params
   })
 }
+
+export function articleInfo(Id) {
+  return request({
+    url: `/article/info/${Id}`,
+    method: 'get'
+  })
+}

@@ -16,9 +16,9 @@
               {{item.ViewCount}}
             </span>
           </div>
-          <div class="list-context" v-html="item.Introduce" />
+          <div class="list-context" v-html="item.Summary" />
           <p class="list-go">
-            <nuxt-link to="`/detail/${item.Id}`" title="查看全文">查看全文<i class="el-icon-arrow-right" /></nuxt-link>
+            <nuxt-link :to="`/detail/${item.Id}`" title="查看全文">查看全文<i class="el-icon-arrow-right" /></nuxt-link>
           </p>
         </li>
         <el-divider :key="item.Id" v-if="index!=list.length-1" />
@@ -50,7 +50,7 @@ export default {
     const data = await $axios.get('/article/list')
     const list = data.data.data.list;
     list.forEach(item => {
-      item.Introduce = marked(item.Introduce, { sanitize: true })
+      item.Summary = marked(item.Summary, { sanitize: true })
     });
 
     return { list }

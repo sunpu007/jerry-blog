@@ -45,7 +45,7 @@ class LoginController extends Controller {
       offset = parseInt(page - 1) * parseInt(size);
     const [ list, total ] = await Promise.all([
       this.app.mysql.select('Article', {
-        columns: ['Id', 'Title', 'Summary', 'ViewCount', 'CreatedTime'],
+        columns: ['Id', 'Title', 'Summary', 'ViewCount', 'Status', 'CreatedTime', 'UpdatedTime'],
         orders: [['CreatedTime','desc']],
         limit,
         offset,
@@ -63,6 +63,46 @@ class LoginController extends Controller {
       columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount'],
     });
     ctx.body = setResult({ data: { info } });
+  }
+  /**
+   * 编辑文章
+   */
+  async edit() {
+    const { ctx } = this;
+    const body = ctx.request.body;
+    let result
+    // 判断新增或编辑
+    if (body.Id) {
+      // 编辑
+      result = await ctx.app.mysql.update('Article', {
+        Title: body.Title,
+        Summary: body.Summary,
+        Content: body.Content,
+        UpdatedTime: new Date()
+      }, {
+        where: { Id: body.Id }
+      })
+    } else {
+      // 新增
+      result = await ctx.app.mysql.insert('Article', {
+        Title: body.Title,
+        Summary: body.Summary,
+        Content: body.Content,
+      })
+    }
+    if (result.affectedRows !== 1) throw new BlogError(RESULT_FAIL, '保存失败，请稍后重试');
+    ctx.body = setResult();
+  }
+  /**
+   * 更新文章状态
+   */
+  async status() {
+    const { ctx } = this;
+    const { Id, Status } = ctx.request.body;
+    const result = await ctx.app.mysql.update('Article', { Status }, { where: { Id } });
+    const message = Status === -1 ? '删除失败' : Status === 0 ? '发布失败' : '下架失败'
+    if (result.affectedRows !== 1) throw new BlogError(RESULT_FAIL, `${message}，请稍后重试`);
+    ctx.body = setResult();
   }
 }
 

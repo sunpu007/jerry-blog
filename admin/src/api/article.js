@@ -14,3 +14,19 @@ export function articleInfo(Id) {
     method: 'get'
   })
 }
+
+export function articleEdit(data) {
+  return request({
+    url: '/article/edit',
+    method: 'post',
+    data
+  })
+}
+
+export function articleStatus(data) {
+  return request({
+    url: '/article/status',
+    method: 'post',
+    data
+  })
+}

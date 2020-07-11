@@ -11,6 +11,7 @@ class ArticleController extends Controller {
   async list() {
     const { ctx } = this;
     const list = await ctx.app.mysql.select('Article', {
+      where: { Status: 0 },
       columns: ['Id', 'Title', 'Summary', 'ViewCount', 'CreatedTime'],
       orders: [['CreatedTime','desc']]
     });
@@ -21,9 +22,12 @@ class ArticleController extends Controller {
    */
   async info() {
     const { ctx } = this;
-    const info = await ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
-      columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount', 'CreatedTime'],
-    });
+    const [ info ] = await Promise.all([
+      ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
+        columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount', 'CreatedTime'],
+      }),
+      ctx.app.mysql.query('UPDATE Article SET ViewCount = ViewCount + 1 WHERE Id = ?', [ ctx.params.Id ]),
+    ])
     ctx.body = setResult({ data: { info } });
   }
 }

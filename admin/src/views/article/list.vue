@@ -25,9 +25,12 @@
           {{ row.UpdatedTime | dateTimeFilter('yyyy-MM-dd hh:mm:ss') }}
         </template>
       </el-table-column>
-      <el-table-column align="center" label="操作" width="80px">
+      <el-table-column align="center" label="操作" width="140px">
         <template slot-scope="{row}">
           <el-button type="text" @click="handlEdit(row.Id)">编辑</el-button>
+          <el-button v-if="row.Status == 0" type="text" @click="updateStatus(row.Id, 1)">下架</el-button>
+          <el-button v-if="row.Status == 1" type="text" @click="updateStatus(row.Id, 0)">发布</el-button>
+          <el-button v-if="row.Status != -1" type="text" @click="updateStatus(row.Id, -1)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -38,7 +41,7 @@
 <script>
 import Pagination from '@/components/Pagination'
 import waves from '@/directive/waves'
-import { articleList } from '@/api/article'
+import { articleList, articleStatus } from '@/api/article'
 export default {
   components: { Pagination },
   directives: { waves },
@@ -83,6 +86,17 @@ export default {
         this.$router.push({ path: '/article/edit', query: { Id }})
       } else {
         this.$router.push({ path: '/article/edit' })
+      }
+    },
+    async updateStatus(Id, Status) {
+      const { code } = await articleStatus({ Id, Status })
+      if (code === 0) {
+        const message = Status === -1 ? '删除成功' : Status === 0 ? '发布成功' : '下架成功'
+        this.$message({
+          message,
+          type: 'success'
+        })
+        this.getList()
       }
     }
   }

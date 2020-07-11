@@ -12,24 +12,27 @@
           <nuxt-link to="/">文章</nuxt-link>
         </li>
         <li title="个人简介">
-          <a href="http://resume.myjerry.cn/" target="_blank">个人简介</a>
+          <a href="http://resume.myjerry.cn/" target="_blank"><svg-icon icon-class="link" />个人简介</a>
         </li>
       </ul>
       <div class="social-account">
         <el-divider>社交账号</el-divider>
-        <el-tooltip class="item" effect="dark" content="GitHub: https://github.com/sunpu007" placement="top">
+        <el-tooltip class="item" content="GitHub: https://github.com/sunpu007" placement="top">
           <el-avatar size="small">
-            <a href="https://github.com/sunpu007" target="_blank"><i class="iconfont icon-GitHub"/></a>
+            <a href="https://github.com/sunpu007" target="_blank"><svg-icon icon-class="GitHub" /></a>
           </el-avatar>
         </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="QQ: 731238433" placement="top">
+        <el-tooltip class="item" content="QQ: 731238433" placement="top">
           <el-avatar size="small">
-            <i class="iconfont icon-QQ"/>
+            <a href="tencent://message/?uin=731238433&Site=Sambow&Menu=yes"><svg-icon icon-class="QQ" /></a>
           </el-avatar>
         </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="WeChat: s731238433" placement="top">
+        <el-tooltip class="item" content="WeChat: s731238433" placement="top">
+          <div slot="content">
+            <img src="http://cdn-blog.myjerry.cn/wechat-accout-img.jpg" width="150px" height="150px" alt="">
+          </div>
           <el-avatar size="small">
-            <i class="iconfont icon-wechat"/>
+            <svg-icon icon-class="wechat" />
           </el-avatar>
         </el-tooltip>
       </div>

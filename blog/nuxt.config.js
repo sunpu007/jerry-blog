@@ -1,3 +1,4 @@
+const path = require('path')
 
 export default {
   mode: 'universal',
@@ -14,7 +15,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_1760616_02hyaqb2hoxb.css' }
     ]
   },
   /*
@@ -34,7 +34,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/filters',
-    { src: '@/plugins/loading', ssr: false }
+    { src: '@/plugins/loading', ssr: false },
+    { src: '@/plugins/icons', ssr: true }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -49,7 +50,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
   ],
   /*
   ** Axios module configuration
@@ -74,6 +75,17 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
+      svgRule.exclude = [path.resolve(__dirname, 'assets/svg')]
+      // Includes /icons/svg for svg-sprite-loader
+      config.module.rules.push({
+        test: /\.svg$/,
+        include: [path.resolve(__dirname, 'assets/svg')],
+        loader: 'svg-sprite-loader',
+        options: {
+          symbolId: 'icon-[name]',
+        },
+      })
     }
   },
   // 防止重复打包

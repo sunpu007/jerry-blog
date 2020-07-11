@@ -20,12 +20,15 @@
   ul {
     margin-top: 80px;
     padding-left: 15%;
-    line-height: 60px;
-    font-size: 1.2rem;
+    line-height: 40px;
+    font-size: 1rem;
     li {
       color: #fff;
       a {
         color: inherit;
+        .svg-icon {
+          margin-right: 5px;
+        }
       }
     }
   }

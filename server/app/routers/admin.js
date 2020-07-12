@@ -13,4 +13,5 @@ module.exports = app => {
   router.get('/api/admin/article/info/:Id', checkTokenhandler, controller.admin.info);
   router.post('/api/admin/article/edit', checkTokenhandler, controller.admin.edit);
   router.post('/api/admin/article/status', checkTokenhandler, controller.admin.status);
+  router.get('/api/admin/config/list', checkTokenhandler, controller.admin.configList);
 };

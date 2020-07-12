@@ -2,7 +2,7 @@
   <el-row class="container">
     <el-col :xs="0" :sm="7" :md="6" :lg="5" :xl="4" class="left">
       <div class="avatar">
-        <el-image src="http://cdn-blog.myjerry.cn/avatar/blog-avatar.jpg" fit="cover" lazy>
+        <el-image :src="initData.Avatar" fit="cover" lazy>
           <!-- <i slot="placeholder" class="el-icon-loading" /> -->
         </el-image>
       </div>
@@ -12,24 +12,24 @@
           <nuxt-link to="/">文章</nuxt-link>
         </li>
         <li title="个人简介">
-          <a href="http://resume.myjerry.cn/" target="_blank"><svg-icon icon-class="link" />个人简介</a>
+          <a :href="initData.resume" target="_blank"><svg-icon icon-class="link" />个人简介</a>
         </li>
       </ul>
       <div class="social-account">
         <el-divider>社交账号</el-divider>
-        <el-tooltip class="item" content="GitHub: https://github.com/sunpu007" placement="top">
+        <el-tooltip class="item" :content="`GitHub: https://github.com/${initData.GitHub}`" placement="top">
           <el-avatar size="small">
-            <a href="https://github.com/sunpu007" target="_blank"><svg-icon icon-class="GitHub" /></a>
+            <a :href="`https://github.com/${initData.GitHub}`" target="_blank"><svg-icon icon-class="GitHub" /></a>
           </el-avatar>
         </el-tooltip>
-        <el-tooltip class="item" content="QQ: 731238433" placement="top">
+        <el-tooltip class="item" :content="`QQ: ${initData.QQ}`" placement="top">
           <el-avatar size="small">
-            <a href="tencent://message/?uin=731238433&Site=Sambow&Menu=yes"><svg-icon icon-class="QQ" /></a>
+            <a :href="`tencent://message/?uin=${initData.QQ}&Site=Sambow&Menu=yes`"><svg-icon icon-class="QQ" /></a>
           </el-avatar>
         </el-tooltip>
         <el-tooltip class="item" content="WeChat: s731238433" placement="top">
           <div slot="content">
-            <img src="http://cdn-blog.myjerry.cn/wechat-accout-img.jpg" width="150px" height="150px" alt="">
+            <img :src="initData.WeChat" width="150px" height="150px" alt="">
           </div>
           <el-avatar size="small">
             <svg-icon icon-class="wechat" />
@@ -37,9 +37,9 @@
         </el-tooltip>
       </div>
       <div class="left-footer">
-        <p class="view-count" title="访问量"><i class="el-icon-view" /> 1000+</p>
+        <p class="view-count" title="访问量"><i class="el-icon-view" /> {{initData.SystemVisits}}+</p>
         <p>系统由 Vue+Node+Element UI驱动</p>
-        <p class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank">陕ICP备17007879号</a></p>
+        <p class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank">{{initData.ICP}}</a></p>
       </div>
     </el-col>
     <el-col :xs="24" :sm="17" :md="18" :lg="19" :xl="20" class="right">
@@ -54,6 +54,10 @@
 
 <script>
 export default {
+  async asyncData({ app: { $axios } }) {
+    const data = await $axios.get('/init')
+    return { initData: data.data.data.initData }
+  }
 }
 </script>
 

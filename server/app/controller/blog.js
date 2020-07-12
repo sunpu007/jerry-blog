@@ -6,6 +6,21 @@ const { setResult } = require('../utils');
 
 class ArticleController extends Controller {
   /**
+   * 页面初始参数
+   */
+  async init() {
+    const { ctx } = this;
+    const list = await ctx.app.mysql.select('SysConfig', {
+      where: { CfgName: [ 'Avatar', 'GitHub', 'ICP', 'QQ', 'resume', 'SystemVisits', 'WeChat' ] }
+    });
+    const initData = {};
+    list.forEach(item => {
+      console.log('=========>', item);
+      initData[item.CfgName] = item.CfgValue
+    });
+    ctx.body = setResult({ data: { initData } });
+  }
+  /**
    * 获取文章列表
    */
   async list() {

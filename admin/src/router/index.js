@@ -57,7 +57,10 @@ export const constantRoutes = [
 
   {
     path: '/article',
+    name: 'Article',
     component: Layout,
+    redirect: '/article/list',
+    meta: { title: '文章管理', icon: 'list' },
     children: [
       {
         path: 'list',
@@ -71,6 +74,22 @@ export const constantRoutes = [
         component: () => import('@/views/article/edit'),
         meta: { title: '编辑文章', icon: 'edit' },
         hidden: true
+      }
+    ]
+  },
+
+  {
+    path: '/config',
+    name: 'Config',
+    component: Layout,
+    redirect: '/config/index',
+    meta: { title: '系统配置', icon: 'setting' },
+    children: [
+      {
+        path: 'index',
+        name: 'ConfigIndex',
+        component: () => import('@/views/config/index'),
+        meta: { title: '系统配置', icon: 'setting' }
       }
     ]
   },

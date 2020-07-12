@@ -16,7 +16,6 @@
     "@nuxtjs/proxy": "^2.0.0",
     "element-ui": "^2.4.11",
     "highlight.js": "^10.1.1",
-    "markdown-navbar": "^1.4.2",
     "marked": "^1.1.0",
     "nprogress": "^0.2.0",
     "nuxt": "^2.0.0"

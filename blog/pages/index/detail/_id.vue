@@ -28,7 +28,6 @@ marked.setOptions({
   renderer: rendererMD,
   gfm: true,
   pedantic: false,
-  sanitize: false,
   tables: true,
   breaks: false,
   smartLists: true,
@@ -47,7 +46,7 @@ export default {
   },
   computed: {
     compiledMarkdown() {
-      return marked(this.info.Content, { sanitize: true })
+      return marked(this.info.Content)
     }
   }
 }

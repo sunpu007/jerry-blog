@@ -104,6 +104,14 @@ class LoginController extends Controller {
     if (result.affectedRows !== 1) throw new BlogError(RESULT_FAIL, `${message}，请稍后重试`);
     ctx.body = setResult();
   }
+  /**
+   * 配置列表
+   */
+  async configList() {
+    const { ctx } = this;
+    const list = await ctx.app.mysql.select('SysConfig');
+    ctx.body = setResult({ data: { list } });
+  }
 }
 
 module.exports = LoginController;

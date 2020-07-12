@@ -15,9 +15,9 @@ class ArticleController extends Controller {
     });
     const initData = {};
     list.forEach(item => {
-      console.log('=========>', item);
       initData[item.CfgName] = item.CfgValue
     });
+    ctx.app.mysql.query('UPDATE SysConfig SET CfgValue = CfgValue + 1 WHERE CfgName = ?', [ 'SystemVisits' ]);
     ctx.body = setResult({ data: { initData } });
   }
   /**

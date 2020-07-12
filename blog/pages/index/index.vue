@@ -36,7 +36,6 @@ marked.setOptions({
   renderer: rendererMD,
   gfm: true,
   pedantic: false,
-  sanitize: false,
   tables: true,
   breaks: false,
   smartLists: true,
@@ -50,7 +49,7 @@ export default {
     const data = await $axios.get('/article/list')
     const list = data.data.data.list;
     list.forEach(item => {
-      item.Summary = marked(item.Summary, { sanitize: true })
+      item.Summary = marked(item.Summary)
     });
 
     return { list }

@@ -15,6 +15,13 @@
     }
   }
   .context {
+    font-size: 1.05rem;
+    color: #777;
+    line-height: 1.9rem;
+    /deep/ p {
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
     /deep/ h2{
       border-bottom: 1px solid #d9dada;
       padding-bottom: 1rem;
@@ -47,6 +54,8 @@
       font-weight: 300;
       font-family: Menlo, monospace;
       border-radius: .3rem;
+      margin-top: 0;
+      margin-bottom: 1em;
       code{
         border:0px !important;
         background-color: #283646 !important;

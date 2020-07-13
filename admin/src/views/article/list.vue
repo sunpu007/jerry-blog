@@ -6,9 +6,8 @@
     </div>
     <el-table v-loading="listLoading" :data="list" border fit highlight-current-row style="width: 100%">
       <el-table-column align="center" prop="Id" label="ID" width="50px" />
-      <el-table-column align="center" prop="Title" label="标题" />
-      <el-table-column align="center" prop="Summary" show-overflow-tooltip label="摘要" />
-      <!-- <el-table-column align="center" prop="Content" label="内容" /> -->
+      <el-table-column prop="Title" label="标题" />
+      <el-table-column prop="Summary" show-overflow-tooltip label="摘要" />
       <el-table-column align="center" prop="ViewCount" label="浏览量" width="80px" />
       <el-table-column align="center" prop="Status" label="状态" width="80px">
         <template slot-scope="{row}">

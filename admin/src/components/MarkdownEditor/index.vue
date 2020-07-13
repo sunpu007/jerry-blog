@@ -1,15 +1,7 @@
 <template>
   <div>
     <div :id="id" />
-    <el-upload
-      ref="files"
-      class="avatar-uploader"
-      action="http://up-z2.qiniup.com"
-      :data="uploadForm"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload">
-    </el-upload>
+    <el-upload ref="files" class="avatar-uploader" action="http://up-z2.qiniup.com" :data="uploadForm" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload" />
   </div>
 </template>
 
@@ -114,14 +106,14 @@ export default {
        * 添加自定义按钮
        */
       // 获取编辑器上的功能条
-      let toolbar = this.editor.getUI().getToolbar()
-      let fileDom = this.$refs.files
+      const toolbar = this.editor.getUI().getToolbar()
+      const fileDom = this.$refs.files
       // 添加事件
       this.editor.eventManager.addEventType('uploadEvent')
       this.editor.eventManager.listen('uploadEvent', () => {
         // 模拟点击事件
         fileDom.$el.childNodes[0].childNodes[0].click()
-      });
+      })
       // 插入图片按钮
       toolbar.insertItem(15, {
         type: 'button',
@@ -132,7 +124,7 @@ export default {
           // 对应上文的eventManager添加的监听事件类型，通过点击触发
           event: 'uploadEvent',
           // 鼠标hover自定义按钮的提示信息
-          tooltip: 'insert image',
+          tooltip: 'insert image'
         }
       })
     },
@@ -164,17 +156,17 @@ export default {
       // 上传成功，获取url
       const { code, data } = await url({ key: res.key })
       if (code === 0) {
-        let editor = this.editor.getCodeMirror();
-        let editorHtml = this.editor.getCurrentModeEditor();
-        let isMarkdownMode = this.editor.isMarkdownMode();
+        const editor = this.editor.getCodeMirror()
+        const editorHtml = this.editor.getCurrentModeEditor()
+        const isMarkdownMode = this.editor.isMarkdownMode()
         if (isMarkdownMode) {
-          editor.replaceSelection(`![${file.name}](${data.url})`);
+          editor.replaceSelection(`![${file.name}](${data.url})`)
         } else {
-          let range = editorHtml.getRange();
-          let img = document.createElement('img');
-          img.src = `${data.url}`;
-          img.alt = "img";
-          range.insertNode(img);
+          const range = editorHtml.getRange()
+          const img = document.createElement('img')
+          img.src = `${data.url}`
+          img.alt = 'img'
+          range.insertNode(img)
         }
       }
     }

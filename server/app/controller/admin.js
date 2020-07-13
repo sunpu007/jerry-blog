@@ -112,6 +112,22 @@ class LoginController extends Controller {
     const list = await ctx.app.mysql.select('SysConfig');
     ctx.body = setResult({ data: { list } });
   }
+  /**
+   * 获取七牛token
+   */
+  async uptoken() {
+    const token = await this.app.QINIU.createQiniuUpToken();
+    this.ctx.body = setResult({ data: { token } });
+  }
+  /**
+   * 获取七牛外链
+   */
+  async url() {
+    const { ctx } = this;
+    const { key } = ctx.request.body;
+    const url = await ctx.app.QINIU.createQiniuAccessLink(key);
+    ctx.body = setResult({ data: { url } });
+  }
 }
 
 module.exports = LoginController;

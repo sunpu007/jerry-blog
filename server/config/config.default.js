@@ -47,6 +47,7 @@ module.exports = appInfo => {
     dir: path.join(appInfo.baseDir, 'logs'),
   };
 
+  // 跨域配置
   config.security = {
     csrf: {
       enable: false,
@@ -57,6 +58,14 @@ module.exports = appInfo => {
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
+
+  // 七牛配置
+  config.qiniu = {
+    qiniu_access_key: 'Ri2kmIh6VvWWJGiShCgGogDeMax9auovBxSCAGsY',
+    qiniu_secret_key: 'k-KtR7EfQ-q-LSE2V4R6aWyFJ28h01VcPuLYrCKi',
+    qiniu_bucket_name: 'cn-myjerry-blog',
+    qiniu_bucket_domain: 'http://cdn-blog.myjerry.cn/'
+  }
 
   return {
     ...config,

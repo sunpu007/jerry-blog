@@ -14,4 +14,6 @@ module.exports = app => {
   router.post('/api/admin/article/edit', checkTokenhandler, controller.admin.edit);
   router.post('/api/admin/article/status', checkTokenhandler, controller.admin.status);
   router.get('/api/admin/config/list', checkTokenhandler, controller.admin.configList);
+  router.get('/api/admin/qiniu/uptoken', checkTokenhandler, controller.admin.uptoken);
+  router.post('/api/admin/qiniu/url', checkTokenhandler, controller.admin.url);
 };

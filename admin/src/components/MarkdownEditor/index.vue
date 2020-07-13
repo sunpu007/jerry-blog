@@ -1,5 +1,16 @@
 <template>
-  <div :id="id" />
+  <div>
+    <div :id="id" />
+    <el-upload
+      ref="files"
+      class="avatar-uploader"
+      action="http://up-z2.qiniup.com"
+      :data="uploadForm"
+      :show-file-list="false"
+      :on-success="handleAvatarSuccess"
+      :before-upload="beforeAvatarUpload">
+    </el-upload>
+  </div>
 </template>
 
 <script>
@@ -11,6 +22,7 @@ import 'tui-editor/dist/tui-editor-contents.css' // editor content
 import Editor from 'tui-editor'
 import defaultOptions from './default-options'
 
+import { uptoken, url } from '@/api/qiniu'
 export default {
   name: 'MarkdownEditor',
   props: {
@@ -48,7 +60,10 @@ export default {
   },
   data() {
     return {
-      editor: null
+      editor: null,
+      uploadForm: {
+        token: ''
+      }
     }
   },
   computed: {
@@ -95,6 +110,31 @@ export default {
       this.editor.on('change', () => {
         this.$emit('input', this.editor.getValue())
       })
+      /**
+       * 添加自定义按钮
+       */
+      // 获取编辑器上的功能条
+      let toolbar = this.editor.getUI().getToolbar()
+      let fileDom = this.$refs.files
+      // 添加事件
+      this.editor.eventManager.addEventType('uploadEvent')
+      this.editor.eventManager.listen('uploadEvent', () => {
+        // 模拟点击事件
+        fileDom.$el.childNodes[0].childNodes[0].click()
+      });
+      // 插入图片按钮
+      toolbar.insertItem(15, {
+        type: 'button',
+        options: {
+          name: 'customize',
+          // 自定义按钮的类名
+          className: 'tui-image',
+          // 对应上文的eventManager添加的监听事件类型，通过点击触发
+          event: 'uploadEvent',
+          // 鼠标hover自定义按钮的提示信息
+          tooltip: 'insert image',
+        }
+      })
     },
     destroyEditor() {
       if (!this.editor) return
@@ -112,7 +152,38 @@ export default {
     },
     getHtml() {
       return this.editor.getHtml()
+    },
+    async beforeAvatarUpload() {
+      // 获取七牛token
+      const { code, data } = await uptoken()
+      if (code === 0) {
+        this.uploadForm.token = data.token
+      }
+    },
+    async handleAvatarSuccess(res, file) {
+      // 上传成功，获取url
+      const { code, data } = await url({ key: res.key })
+      if (code === 0) {
+        let editor = this.editor.getCodeMirror();
+        let editorHtml = this.editor.getCurrentModeEditor();
+        let isMarkdownMode = this.editor.isMarkdownMode();
+        if (isMarkdownMode) {
+          editor.replaceSelection(`![${file.name}](${data.url})`);
+        } else {
+          let range = editorHtml.getRange();
+          let img = document.createElement('img');
+          img.src = `${data.url}`;
+          img.alt = "img";
+          range.insertNode(img);
+        }
+      }
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.avatar-uploader {
+  display: none;
+}
+</style>

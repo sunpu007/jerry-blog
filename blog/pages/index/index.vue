@@ -36,10 +36,13 @@ marked.setOptions({
   renderer: rendererMD,
   gfm: true,
   pedantic: false,
+  sanitize: false,
   tables: true,
   breaks: false,
   smartLists: true,
   smartypants: false,
+  sanitize:false,
+  xhtml: false,
   highlight(code) {
     return hljs.highlightAuto(code).value;
   }

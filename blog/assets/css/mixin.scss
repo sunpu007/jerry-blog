@@ -58,4 +58,7 @@
     line-height: 1.1rem;
     font-size: .87rem;
   }
+  /deep/ img {
+    width: 100%;
+  }
 }

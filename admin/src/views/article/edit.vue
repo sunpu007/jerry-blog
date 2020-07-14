@@ -66,7 +66,7 @@ export default {
           })
         }
       }
-    }， 30000),
+    }, 30000),
     async loadInfo() {
       const { code, data } = await articleInfo(this.$route.query.Id)
       if (code === 0) {

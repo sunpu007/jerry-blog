@@ -110,7 +110,7 @@ export default {
       if (query != '') {
         this.tags = this.tagList.filter(item => {
           return item.TagName.toLowerCase().indexOf(query.toLowerCase()) > -1
-        });
+        })
       } else {
         this.tags = []
       }

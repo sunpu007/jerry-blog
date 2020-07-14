@@ -24,6 +24,7 @@
     font-size: 1rem;
     li {
       color: #fff;
+      list-style: none;
       a {
         color: inherit;
         .svg-icon {
@@ -35,7 +36,7 @@
   .social-account {
     position: absolute;
     left: 10%;
-    bottom: 7rem;
+    bottom: 6rem;
     width: 80%;
     text-align: center;
     .el-divider {

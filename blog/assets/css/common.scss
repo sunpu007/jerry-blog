@@ -1,8 +1,8 @@
-// * {
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-// }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html, body, #__nuxt, #__layout, .container {
   width: 100%;
@@ -11,9 +11,9 @@ html, body, #__nuxt, #__layout, .container {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
 }
 
-// ul, ol, li {
-//   list-style: none;
-// }
+ul, ol, li {
+  list-style: none;
+}
 
 a {
   text-decoration: none;

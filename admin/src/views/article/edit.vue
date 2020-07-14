@@ -87,7 +87,7 @@ export default {
           message: '保存成功',
           type: 'success'
         })
-        this.$router.back(-1)
+        // this.$router.back(-1)
       }
     }
   }

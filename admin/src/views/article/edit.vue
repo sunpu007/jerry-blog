@@ -10,16 +10,14 @@
             <el-col :span="6">
               <el-form-item label-width="80px" label="文章类别:" prop="TypeId">
                 <el-select v-model="postForm.TypeId" placeholder="请选择" style="width: 100%;">
-                  <el-option v-for="item in typeList" :key="item.Id" :label="item.TypeName" :value="item.Id">
-                  </el-option>
+                  <el-option v-for="item in typeList" :key="item.Id" :label="item.TypeName" :value="item.Id" />
                 </el-select>
               </el-form-item>
             </el-col>
             <el-col :span="10">
               <el-form-item label-width="80px" label="文章类别:" prop="Tags">
                 <el-select v-model="postForm.Tags" multiple filterable remote reserve-keyword allow-create default-first-option :remote-method="filterTag" placeholder="请选择" style="width: 100%;">
-                  <el-option v-for="item in tags" :key="item.TagName" :label="item.TagName" :value="item.TagName">
-                  </el-option>
+                  <el-option v-for="item in tags" :key="item.TagName" :label="item.TagName" :value="item.TagName" />
                 </el-select>
               </el-form-item>
             </el-col>
@@ -107,7 +105,7 @@ export default {
       }
     },
     filterTag(query) {
-      if (query != '') {
+      if (query !== '') {
         this.tags = this.tagList.filter(item => {
           return item.TagName.toLowerCase().indexOf(query.toLowerCase()) > -1
         })

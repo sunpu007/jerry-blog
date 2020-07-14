@@ -11,7 +11,7 @@
       <el-table-column align="center" prop="TypeName" label="类别" width="80px" />
       <el-table-column align="center" label="标签" width="150px">
         <template slot-scope="{row}">
-          <el-tag v-for="item in JSON.parse(row.Tags)" :key="item">{{item}}</el-tag>
+          <el-tag v-for="item in JSON.parse(row.Tags)" :key="item">{{ item }}</el-tag>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="ViewCount" label="浏览量" width="80px" />

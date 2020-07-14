@@ -28,6 +28,7 @@
 import MDinput from '@/components/MDinput'
 import MarkdownEditor from '@/components/MarkdownEditor'
 import { articleInfo, articleEdit } from '@/api/article'
+import { debounce, equalsObj } from '@/utils'
 export default {
   components: {
     MDinput,
@@ -40,13 +41,32 @@ export default {
         title: { required: true, message: 'Please enter a title', trigger: 'blur' },
         Summary: { required: true, message: 'Please enter a title', trigger: 'blur' },
         Content: { required: true, message: 'Please enter a title', trigger: 'blur' }
-      }
+      },
+    }
+  },
+  watch: {
+    postForm: {
+      handler(val, old) {
+        this.autoSave(val, old)
+      },
+      deep: true
     }
   },
   mounted() {
     if (this.$route.query.Id) this.loadInfo()
   },
   methods: {
+    autoSave: debounce(async function(val, old) {
+      if (!equalsObj(val, old)) {
+        const { code } = await articleEdit(this.postForm)
+        if (code === 0) {
+          this.$message({
+            message: '自动保存成功',
+            type: 'success'
+          })
+        }
+      }
+    }， 30000),
     async loadInfo() {
       const { code, data } = await articleInfo(this.$route.query.Id)
       if (code === 0) {

@@ -115,3 +115,52 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+/**
+ * 防抖
+ * @param {Function} fn 实际要执行的函数
+ * @param {Number} delay 延迟时间，也就是阈值，单位是毫秒（ms）
+ * @return {Function}     返回一个“去弹跳”了的函数
+ */
+export function debounce(fn, delay) {
+  let timer
+  return function() {
+    const ctx = this
+    const args = arguments
+    clearTimeout(timer)
+    timer = setTimeout(function() {
+      fn.apply(ctx, args)
+    }, delay)
+  }
+}
+
+// 判断此类型是否是Array类型
+export const isObject = obj => Object.prototype.toString.call(obj) === '[object Object]'
+// 判断此对象是否是Object类型
+export const isArray = arr => Object.prototype.toString.call(arr) === '[object Array]'
+
+/**
+ * 判断两个对象是否相等
+ * @param {Object} source 源对象
+ * @param {Object} target 目标对象
+ * @return {Boolean}
+ */
+export const equalsObj = (source, target) => {
+  // 类型为基本类型时,如果相同,则返回true
+  if (source === target) return true
+  if (isObject(source) && isObject(target) && Object.keys(source).length === Object.keys(target)) {
+    for (const key in source) {
+      if (source.hasOwnProperty(key)) {
+        if (!equalsObj(source[key], target[key])) return false
+      }
+    }
+  } else if (isArray(source) && isArray(target) && source.length === target.length) {
+    for (const index in source) {
+      if (!equalsObj(source[index], target[index])) return false
+    }
+  } else {
+    return false
+  }
+  return true
+}
+

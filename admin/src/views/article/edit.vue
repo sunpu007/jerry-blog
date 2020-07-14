@@ -58,13 +58,13 @@ export default {
   methods: {
     autoSave: debounce(async function(val, old) {
       if (!equalsObj(val, old)) {
-        const { code } = await articleEdit(this.postForm)
-        if (code === 0) {
-          this.$message({
-            message: '自动保存成功',
-            type: 'success'
-          })
-        }
+        // const { code } = await articleEdit(this.postForm)
+        // if (code === 0) {
+        //   this.$message({
+        //     message: '自动保存成功',
+        //     type: 'success'
+        //   })
+        // }
       }
     }, 30000),
     async loadInfo() {

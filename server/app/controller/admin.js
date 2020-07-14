@@ -44,12 +44,10 @@ class LoginController extends Controller {
     const limit = parseInt(size),
       offset = parseInt(page - 1) * parseInt(size);
     const [ list, total ] = await Promise.all([
-      this.app.mysql.select('Article', {
-        columns: ['Id', 'Title', 'Summary', 'ViewCount', 'Status', 'CreatedTime', 'UpdatedTime'],
-        orders: [['CreatedTime','desc']],
-        limit,
-        offset,
-      }),
+      // this.app.mysql.select('Article', {
+      this.app.mysql.query(`SELECT Article.Id Id, Article.Title Title, Article.Summary Summary, Article.ViewCount ViewCount, Article.Status Status,
+        Article.CreatedTime CreatedTime, Article.UpdatedTime UpdatedTime, Article.Tags Tags, Type.TypeName TypeName FROM Article, Type WHERE
+        Article.TypeId = Type.Id ORDER BY Article.CreatedTime DESC LIMIT ?,?`, [ offset, limit ]),
       this.app.mysql.count('Article'),
     ]);
     ctx.body = setResult({ data: { list, total } });
@@ -59,9 +57,10 @@ class LoginController extends Controller {
    */
   async info() {
     const { ctx } = this;
-    const info = await ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
-      columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount'],
+    let info = await ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
+      columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount', 'Tags', 'TypeId'],
     });
+    info.Tags = info.Tags ? JSON.parse(info.Tags) : [];
     ctx.body = setResult({ data: { info } });
   }
   /**
@@ -78,6 +77,8 @@ class LoginController extends Controller {
         Title: body.Title,
         Summary: body.Summary,
         Content: body.Content,
+        TypeId: body.TypeId,
+        Tags: JSON.stringify(body.Tags),
         UpdatedTime: new Date()
       }, {
         where: { Id: body.Id }
@@ -88,6 +89,8 @@ class LoginController extends Controller {
         Title: body.Title,
         Summary: body.Summary,
         Content: body.Content,
+        TypeId: body.TypeId,
+        Tags: JSON.stringify(body.Tags),
       })
     }
     if (result.affectedRows !== 1) throw new BlogError(RESULT_FAIL, '保存失败，请稍后重试');
@@ -127,6 +130,22 @@ class LoginController extends Controller {
     const { key } = ctx.request.body;
     const url = await ctx.app.QINIU.createQiniuAccessLink(key);
     ctx.body = setResult({ data: { url } });
+  }
+  /**
+   * 获取文章类别
+   */
+  async typeList() {
+    const { ctx } = this;
+    const list = await this.app.mysql.select('Type');
+    ctx.body = setResult({ data: { list } });
+  }
+  /**
+   * 获取标签
+   */
+  async tagList() {
+    const { ctx } = this;
+    const list = await this.app.mysql.select('Tag')
+    ctx.body = setResult({ data: { list } });
   }
 }
 

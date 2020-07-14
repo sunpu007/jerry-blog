@@ -8,6 +8,12 @@
       <el-table-column align="center" prop="Id" label="ID" width="50px" />
       <el-table-column prop="Title" label="标题" />
       <el-table-column prop="Summary" show-overflow-tooltip label="摘要" />
+      <el-table-column align="center" prop="TypeName" label="类别" width="80px" />
+      <el-table-column align="center" label="标签" width="150px">
+        <template slot-scope="{row}">
+          <el-tag v-for="item in JSON.parse(row.Tags)" :key="item">{{item}}</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column align="center" prop="ViewCount" label="浏览量" width="80px" />
       <el-table-column align="center" prop="Status" label="状态" width="80px">
         <template slot-scope="{row}">

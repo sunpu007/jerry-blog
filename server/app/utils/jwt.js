@@ -28,11 +28,11 @@ class Jwt {
    */
   verifyToken() {
     return new Promise(resolve => {
-      const data = jwt.verify(this.data, 'token')
-      if (new Date(data.exp * 1000).getTime() < Date.now()){
+      const data = jwt.verify(this.data, 'token');
+      if (new Date(data.exp * 1000).getTime() < Date.now()) {
         resolve('err');
       }
-      resolve(data)
+      resolve(data);
     });
   }
 }

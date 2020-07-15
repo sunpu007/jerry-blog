@@ -32,16 +32,16 @@ const isEmpty = val => {
 
 /**
  * MD5加密
- * @param {*} val 待加密字符串
+ * @param {*} str 待加密字符串
  */
-const md5 = val => {
+const md5 = str => {
   const m = crypto.createHash('md5');
   m.update(str, 'utf8');
   return m.digest('hex').toUpperCase();
-}
+};
 
 module.exports = {
   setResult,
   isEmpty,
-  md5
+  md5,
 };

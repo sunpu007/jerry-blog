@@ -15,7 +15,8 @@
         1125
       </span> -->
     </p>
-    <div class="context" v-html="compiledMarkdown"></div>
+    <div class="context" v-html="summary"></div>
+    <div class="context" v-html="content"></div>
   </div>
 </template>
 
@@ -46,7 +47,10 @@ export default {
     return {}
   },
   computed: {
-    compiledMarkdown() {
+    summary() {
+      return marked(this.info.Summary)
+    },
+    content() {
       return marked(this.info.Content)
     }
   }

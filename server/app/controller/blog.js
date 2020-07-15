@@ -15,7 +15,7 @@ class ArticleController extends Controller {
     });
     const initData = {};
     list.forEach(item => {
-      initData[item.CfgName] = item.CfgValue
+      initData[item.CfgName] = item.CfgValue;
     });
     ctx.app.mysql.query('UPDATE SysConfig SET CfgValue = CfgValue + 1 WHERE CfgName = ?', [ 'SystemVisits' ]);
     ctx.body = setResult({ data: { initData } });
@@ -27,8 +27,8 @@ class ArticleController extends Controller {
     const { ctx } = this;
     const list = await ctx.app.mysql.select('Article', {
       where: { Status: 0 },
-      columns: ['Id', 'Title', 'Summary', 'ViewCount', 'CreatedTime'],
-      orders: [['CreatedTime','desc']]
+      columns: [ 'Id', 'Title', 'Summary', 'ViewCount', 'CreatedTime' ],
+      orders: [[ 'CreatedTime', 'desc' ]],
     });
     ctx.body = setResult({ data: { list } });
   }
@@ -39,10 +39,10 @@ class ArticleController extends Controller {
     const { ctx } = this;
     const [ info ] = await Promise.all([
       ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
-        columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount', 'CreatedTime'],
+        columns: [ 'Id', 'Title', 'Summary', 'Content', 'ViewCount', 'CreatedTime' ],
       }),
       ctx.app.mysql.query('UPDATE Article SET ViewCount = ViewCount + 1 WHERE Id = ?', [ ctx.params.Id ]),
-    ])
+    ]);
     ctx.body = setResult({ data: { info } });
   }
 }

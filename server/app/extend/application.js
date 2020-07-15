@@ -21,7 +21,7 @@ module.exports = {
         return putPolicy.uploadToken(mac);
       };
       // 获取外链
-      this[QI_NIU].createQiniuAccessLink = (key) => {
+      this[QI_NIU].createQiniuAccessLink = key => {
         return this.config.qiniu.qiniu_bucket_domain + key;
       };
       return this[QI_NIU];

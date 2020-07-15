@@ -45,8 +45,8 @@ class LoginController extends Controller {
       offset = parseInt(page - 1) * parseInt(size);
     const [ list, total ] = await Promise.all([
       this.app.mysql.select('Article', {
-        columns: ['Id', 'Title', 'Summary', 'ViewCount', 'Status', 'CreatedTime', 'UpdatedTime'],
-        orders: [['CreatedTime','desc']],
+        columns: [ 'Id', 'Title', 'Summary', 'ViewCount', 'Status', 'CreatedTime', 'UpdatedTime' ],
+        orders: [[ 'CreatedTime', 'desc' ]],
         limit,
         offset,
       }),
@@ -60,7 +60,7 @@ class LoginController extends Controller {
   async info() {
     const { ctx } = this;
     const info = await ctx.app.mysql.get('Article', { Id: ctx.params.Id }, {
-      columns: ['Id', 'Title', 'Summary', 'Content', 'ViewCount'],
+      columns: [ 'Id', 'Title', 'Summary', 'Content', 'ViewCount' ],
     });
     ctx.body = setResult({ data: { info } });
   }
@@ -70,7 +70,7 @@ class LoginController extends Controller {
   async edit() {
     const { ctx } = this;
     const body = ctx.request.body;
-    let result
+    let result;
     // 判断新增或编辑
     if (body.Id) {
       // 编辑
@@ -78,17 +78,17 @@ class LoginController extends Controller {
         Title: body.Title,
         Summary: body.Summary,
         Content: body.Content,
-        UpdatedTime: new Date()
+        UpdatedTime: new Date(),
       }, {
-        where: { Id: body.Id }
-      })
+        where: { Id: body.Id },
+      });
     } else {
       // 新增
       result = await ctx.app.mysql.insert('Article', {
         Title: body.Title,
         Summary: body.Summary,
         Content: body.Content,
-      })
+      });
     }
     if (result.affectedRows !== 1) throw new BlogError(RESULT_FAIL, '保存失败，请稍后重试');
     ctx.body = setResult();

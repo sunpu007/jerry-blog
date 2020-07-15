@@ -11,8 +11,12 @@
       .list-icon {
         color: #999;
         padding: .5rem 0;
+        font-size: 14px;
         span {
           margin: 0 .5rem;
+        }
+        i {
+          font-style: normal;
         }
       }
       .list-context {

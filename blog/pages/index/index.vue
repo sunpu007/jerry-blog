@@ -7,14 +7,21 @@
             <nuxt-link :to="`/detail/${item.Id}`" :title="item.Title">{{item.Title}}</nuxt-link>
           </h4>
           <div class="list-icon">
-            <span>
+            <span class="list-icon-date">
               <i class="el-icon-date" />
               {{item.CreatedTime | dateTimeFilter('yyyy-MM-dd')}}
             </span>
+            <!-- <i>|</i> -->
             <span>
               <i class="el-icon-view" />
               {{item.ViewCount}}
             </span>
+            <!-- <i>|</i>
+            <span>开发</span>
+            <i>|</i>
+            <span>web</span>
+            <span>Vue</span>
+            <span>Javascript</span> -->
           </div>
           <div class="list-context" v-html="item.Summary" />
           <p class="list-go">
@@ -54,7 +61,6 @@ export default {
     list.forEach(item => {
       item.Summary = marked(item.Summary)
     });
-
     return { list }
   }
 }

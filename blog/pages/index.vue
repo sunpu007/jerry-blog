@@ -9,8 +9,11 @@
       <h4 class="name">Jerry-全栈工程师</h4>
       <ul>
         <li title="首页">
-          <nuxt-link to="/">首页</nuxt-link>
+          <nuxt-link to="/"><svg-icon icon-class="home" />首页</nuxt-link>
         </li>
+        <!-- <li title="标签">
+          <nuxt-link to="/tags"><svg-icon icon-class="tags" />标签</nuxt-link>
+        </li> -->
         <li title="个人简介">
           <a :href="initData.resume" target="_blank"><svg-icon icon-class="link" />个人简介</a>
         </li>

@@ -46,6 +46,9 @@
     border-radius: .3rem;
     margin-top: 0;
     margin-bottom: 1em;
+    // &::-webkit-scrollbar {/*隐藏滚轮*/
+    //   display: none;
+    // }
     code{
       border:0px !important;
       background-color: #283646 !important;

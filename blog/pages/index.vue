@@ -8,8 +8,8 @@
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
       <ul>
-        <li title="文章">
-          <nuxt-link to="/">文章</nuxt-link>
+        <li title="首页">
+          <nuxt-link to="/">首页</nuxt-link>
         </li>
         <li title="个人简介">
           <a :href="initData.resume" target="_blank"><svg-icon icon-class="link" />个人简介</a>

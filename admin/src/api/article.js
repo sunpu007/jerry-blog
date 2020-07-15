@@ -30,3 +30,19 @@ export function articleStatus(data) {
     data
   })
 }
+
+export function typeList(params) {
+  return request({
+    url: '/type/list',
+    method: 'get',
+    params
+  })
+}
+
+export function tagList(params) {
+  return request({
+    url: '/tag/list',
+    method: 'get',
+    params
+  })
+}

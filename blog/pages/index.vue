@@ -45,7 +45,7 @@
         <p class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank">{{initData.ICP}}</a></p>
       </div>
     </el-col>
-    <el-col :xs="24" :sm="17" :md="18" :lg="19" :xl="20" class="right">
+    <el-col :xs="24" :sm="17" :md="18" :lg="19" :xl="20" class="right" id="main">
       <el-row>
         <el-col :xs="24" :sm="24" :md="22" :lg="20" :xl="17">
           <nuxt-child />

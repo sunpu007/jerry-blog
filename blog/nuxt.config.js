@@ -92,7 +92,7 @@ export default {
     scrollBehavior (to, from, savedPosition) {
       return { y: 0 }
     }
-  }
+  },
   // 防止重复打包
   vendor:['element-ui', 'axios']
 }

@@ -51,6 +51,7 @@
           <nuxt-child />
         </el-col>
       </el-row>
+      <el-backtop target=".right" />
     </el-col>
   </el-row>
 </template>

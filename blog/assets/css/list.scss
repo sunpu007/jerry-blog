@@ -1,6 +1,9 @@
 @import './mixin.scss';
 
 .pages {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
   ul {
     li {
       margin-bottom: 20px;

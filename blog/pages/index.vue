@@ -46,12 +46,11 @@
       </div>
     </el-col>
     <el-col :xs="24" :sm="17" :md="18" :lg="19" :xl="20" class="right" id="main">
-      <el-row>
-        <el-col :xs="24" :sm="24" :md="22" :lg="20" :xl="17">
+      <!-- <el-row>
+        <el-col :xs="24" :sm="24" :md="22" :lg="20" :xl="17"> -->
           <nuxt-child />
-        </el-col>
-      </el-row>
-      <el-backtop target=".right" />
+        <!-- </el-col>
+      </el-row> -->
     </el-col>
   </el-row>
 </template>

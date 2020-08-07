@@ -1,22 +1,27 @@
 <template>
   <div class="pages">
-    <h4 class="title">{{info.Title}}</h4>
-    <p class="icon">
-      <span>
-        <i class="el-icon-date" />
-        {{info.CreatedTime | dateTimeFilter('yyyy-MM-dd')}}
-      </span>
-      <span>
-        <i class="el-icon-view" />
-        {{info.ViewCount}}
-      </span>
-      <!-- <span>
-        <i class="el-icon-star-off" />
-        1125
-      </span> -->
-    </p>
-    <div class="context" v-html="summary"></div>
-    <div class="context" v-html="content"></div>
+    <el-row>
+      <el-col :xs="24" :sm="24" :md="22" :lg="20" :xl="17">
+        <h4 class="title">{{info.Title}}</h4>
+        <p class="icon">
+          <span>
+            <i class="el-icon-date" />
+            {{info.CreatedTime | dateTimeFilter('yyyy-MM-dd')}}
+          </span>
+          <span>
+            <i class="el-icon-view" />
+            {{info.ViewCount}}
+          </span>
+          <!-- <span>
+            <i class="el-icon-star-off" />
+            1125
+          </span> -->
+        </p>
+        <div class="context" v-html="summary"></div>
+        <div class="context" v-html="content"></div>
+      </el-col>
+    </el-row>
+    <el-backtop target=".pages" />
   </div>
 </template>
 

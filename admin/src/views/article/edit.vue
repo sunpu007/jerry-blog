@@ -3,7 +3,7 @@
     <el-form ref="postForm" :model="postForm" :rules="rules" class="form-container" label-position="top">
       <el-row>
         <el-col :span="24">
-          <el-form-item prop="title">
+          <el-form-item prop="Title">
             <MDinput v-model="postForm.Title" :maxlength="100" name="name" required>文章标题</MDinput>
           </el-form-item>
           <el-row :gutter="20">
@@ -52,7 +52,7 @@ export default {
     return {
       postForm: {},
       rules: {
-        title: { required: true, message: '请输入文章标题', trigger: 'blur' },
+        Title: { required: true, message: '请输入文章标题', trigger: 'blur' },
         TypeId: { required: true, message: '请选择文章类别', trigger: 'blur' },
         Tags: { required: true, message: '请选择文章标签', trigger: 'blur' },
         Summary: { required: true, message: '请输入文章摘要', trigger: 'blur' },

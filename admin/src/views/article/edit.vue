@@ -121,6 +121,7 @@ export default {
     },
     async onSubmit() {
       this.$refs.postForm.validate(async valid => {
+        if (!valid) return false
         const loading = this.$loading({
           lock: true,
           text: 'Loading',

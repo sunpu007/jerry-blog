@@ -25,11 +25,17 @@ class ArticleController extends Controller {
    */
   async list() {
     const { ctx } = this;
-    const list = await ctx.app.mysql.select('Article', {
-      where: { Status: 0 },
-      columns: [ 'Id', 'Title', 'Summary', 'ViewCount', 'CreatedTime' ],
-      orders: [[ 'CreatedTime', 'desc' ]],
-    });
+    const { keyword } = ctx.request.query;
+    
+    let listSql = "SELECT Id, Title, Summary, ViewCount, CreatedTime FROM Article WHERE Status = ?";
+    const listArge = [ 0 ];
+    if (keyword) {
+      listSql += ' AND CONCAT(Title, Summary, Content) LIKE ?'
+      listArge.push(`%${keyword}%`);
+    }
+    listSql += ' ORDER BY CreatedTime DESC'
+
+    const list = await ctx.app.mysql.query(listSql, listArge);
     ctx.body = setResult({ data: { list } });
   }
   /**

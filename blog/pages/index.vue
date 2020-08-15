@@ -7,7 +7,7 @@
         </el-image>
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
-      <el-input placeholder="请输入搜索内容" size="mini" />
+      <el-input v-model="keyword" @keyup.enter.native="search" prefix-icon="el-icon-search" placeholder="搜索文章" />
       <ul>
         <li title="首页">
           <nuxt-link to="/"><svg-icon icon-class="home" />首页</nuxt-link>
@@ -61,6 +61,18 @@ export default {
   async asyncData({ app: { $axios } }) {
     const data = await $axios.get('/init')
     return { initData: data.data.data.initData }
+  },
+  data() {
+    return {
+      keyword: ''
+    }
+  },
+  methods: {
+    search() {
+      if (this.keyword.trim() !== '') {
+        this.$router.push({ path: '/search', query: { keyword: this.keyword } })
+      }
+    }
   }
 }
 </script>

@@ -16,9 +16,21 @@
     text-align: center;
     font-size: 1.2rem;
     margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  /deep/ .el-input {
+    display: block;
+    width: calc(100% - 50px);
+    margin: 0 auto;
+    .el-input__inner {
+      color: #fff;
+      border-width: 0 0 1px 0;
+      border-radius: 0;
+      background-color: transparent !important;
+    }
   }
   ul {
-    margin-top: 80px;
+    margin-top: 20px;
     padding-left: 15%;
     line-height: 40px;
     font-size: 1rem;
@@ -74,3 +86,4 @@
     width: 0;
   }
 }
+ 

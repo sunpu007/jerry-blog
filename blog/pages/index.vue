@@ -7,6 +7,7 @@
         </el-image>
       </div>
       <h4 class="name">Jerry-全栈工程师</h4>
+      <el-input placeholder="请输入搜索内容" size="mini" />
       <ul>
         <li title="首页">
           <nuxt-link to="/"><svg-icon icon-class="home" />首页</nuxt-link>

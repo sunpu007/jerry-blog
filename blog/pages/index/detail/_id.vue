@@ -48,6 +48,15 @@ export default {
     const data = await $axios.get(`/article/info/${params.id}`)
     return data.data.data
   },
+  head(){
+    return{
+      title: this.info.Title,
+      meta:[{
+        'name':'keywords',
+        'content': this.info.Title
+      }]
+    }
+  },
   data() {
     return {}
   },

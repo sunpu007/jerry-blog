@@ -12,9 +12,15 @@
         <li title="首页">
           <nuxt-link to="/"><svg-icon icon-class="home" />首页</nuxt-link>
         </li>
+        <!-- <li title="归档">
+          <nuxt-link to="/archive"><svg-icon icon-class="archive" />归档</nuxt-link>
+        </li> -->
         <!-- <li title="标签">
           <nuxt-link to="/tags"><svg-icon icon-class="tags" />标签</nuxt-link>
         </li> -->
+        <li title="关于">
+          <nuxt-link to="/about"><svg-icon icon-class="people" />关于</nuxt-link>
+        </li>
         <li title="个人简介">
           <a :href="initData.resume" target="_blank"><svg-icon icon-class="link" />个人简介</a>
         </li>

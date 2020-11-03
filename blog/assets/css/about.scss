@@ -1,0 +1,15 @@
+.pages {
+  font-size: 14px;
+  color: #333;
+  line-height: 2rem;
+  .about-ul {
+    > li {
+      list-style: circle !important;
+      margin-left: 1rem;
+      > span {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
+  }
+}

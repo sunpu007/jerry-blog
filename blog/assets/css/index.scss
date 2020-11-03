@@ -51,13 +51,16 @@
     bottom: 6rem;
     width: 80%;
     text-align: center;
-    .el-divider {
-      margin: 2rem 0;
-      .el-divider__text {
-        background-color: #2d3a4b;
-        color: #fff;
-      }
+    .social-account-title {
+      margin: 0 0 1.5rem;
     }
+    // .el-divider {
+    //   margin: 2rem 0;
+    //   .el-divider__text {
+    //     background-color: #2d3a4b;
+    //     color: #fff;
+    //   }
+    // }
     .el-avatar--small {
       margin: 0 .7rem;
       a {

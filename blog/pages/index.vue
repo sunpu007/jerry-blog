@@ -20,7 +20,8 @@
         </li>
       </ul>
       <div class="social-account">
-        <el-divider>社交账号</el-divider>
+        <!-- <el-divider></el-divider> -->
+        <p class="social-account-title">社交账号</p>
         <el-tooltip class="item" :content="`GitHub: https://github.com/${initData.GitHub}`" placement="top">
           <el-avatar size="small">
             <a :href="`https://github.com/${initData.GitHub}`" target="_blank"><svg-icon icon-class="GitHub" /></a>
